@@ -44,7 +44,7 @@ function addRecipesToDocument(recipes) {
   //            Append each element to <main>
   if(recipes != null){
     for(let i = 0; i < recipes.length; i++){
-      const recipeCardElement = document.createElement('recipe-card');
+      let recipeCardElement = document.createElement('recipe-card');
       recipeCardElement.data = recipes[i];
       mainElement.appendChild(recipeCardElement);
     }
@@ -98,13 +98,13 @@ function initFormHandler() {
     mainElement.appendChild(newRecipeCard);
     // B9. TODO - Get the recipes array from localStorage, add this new recipe to it, and
     //            then save the recipes array back to localStorage
-    let array = JSON.parse(localStorage.getItem('recipes'));
-    if(array == null){
+    
+    if(JSON.parse(localStorage.getItem('recipes')) == null){
       let arr = [recipeObject];
       localStorage.setItem('recipes', JSON.stringify(arr));
     } else {
-      console.log(array);
-      array.push(newRecipeCard.data);
+      let array = JSON.parse(localStorage.getItem('recipes'));
+      array.push(recipeObject);
       localStorage.setItem('recipes', JSON.stringify(array));
     }
     
