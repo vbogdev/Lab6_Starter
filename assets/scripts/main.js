@@ -104,9 +104,8 @@ function initFormHandler() {
       localStorage.setItem('recipes', JSON.stringify(arr));
     } else {
       let array = JSON.parse(localStorage.getItem('recipes'));
-      let arr = [recipeObject];
-      let arr2 = array.concat(arr);
-      localStorage.setItem('recipes', JSON.stringify(arr2));
+      array.push(recipeObject);
+      localStorage.setItem('recipes', JSON.stringify(array));
     }
     
     
